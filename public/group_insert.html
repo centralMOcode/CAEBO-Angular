@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            .groupAdd {
+                margin: 10px;
+                padding: 10px;
+                border: 1px solid gray;
+                width: 200px;
+                border-radius: 3px;
+                box-shadow: 1px 1px 1px grey;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='groupAdd'>
+            <h3>Add a group to the database.</h3>
+            <form method='POST' action='/api/groups/groupadd'>
+                <label>Group Name:</label><input type='text' name='group_name'><br><br>
+                <input type='submit' value='Add'>
+            </form>
+        </div>
+    </body>
+</html>

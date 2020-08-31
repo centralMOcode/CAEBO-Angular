@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+                        .flex-container{
+                display: flex;
+                margin: 3px 200px;
+            }
+
+            button {
+                margin-left: 200px;
+            }
+
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            th {
+                background-color: #2dabf9;
+                color: white;
+            }
+
+            td:hover {
+                box-shadow: 2px 2px 2px grey;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+
+            .operations {
+                box-shadow:inset 0px -2px 26px 0px #29bbff;
+	            background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	            background-color:#2dabf9;
+	            border-radius:6px;
+	            border:1px solid #0b0e07;
+	            display:inline-block;
+	            cursor:pointer;
+	            color:#ffffff;
+	            font-family:Arial;
+	            font-size:15px;
+	            padding:9px 23px;
+	            text-decoration:none;
+                text-shadow:0px 1px 7px #263666;
+                width: 150px;
+                text-align: center;
+                margin: 3px;
+                margin-left: 200px;
+            }
+
+            .operations:focus {
+                outline: none !important;
+            }
+
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type=submit] {
+                width: 100%;
+                background-color: #2dabf9;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+                opacity: 70%;
+            }
+
+            .formDiv {
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+                width: 71%;
+                margin-left: 200px;
+            }
+        </style>
+        <script type='text/javascript'>
+
+            window.onload = function() {
+                fetch('http://localhost:5000/api/groups')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((myJson) => {
+                    parsed = JSON.parse(myJson);
+                    var html = `<table>
+                                    <thead>
+                                        <th>Group ID</th>
+                                        <th>Group Name</th>
+                                    </thead>`;         
+                    for (var i = 0; i < parsed.length; i++){
+                        html += `<tr>
+                                                <td>${parsed[i].group_id}</td>
+                                                <td>${parsed[i].group_name}</td>
+                                              </tr>`;
+                    }
+                    html += "</table>";
+
+                    document.getElementById('groups').innerHTML += html;
+                });
+            };
+
+            function Redirect() {
+                window.location = "/adminDB.html";
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id='response'></div>
+        <button class='operations' name='Go Back' onclick="Redirect()">Go Back</button>
+        <button class='operations' id='userAdd' onclick="showAddUserForm(1)">Add a User</button>
+        <div class='flex-container' id='groups'>
+        </div>
+        <div id='formDiv' class='formDiv'>
+            <form id='addGroup' method='POST' action='/api/groups/groupadd'>
+                <label>Group Name</label><input id='group' type='text' name='group_name'><br>
+                <input type='submit' value='Add Group'>
+            </form>
+        </div>
+    </body>
+</html>

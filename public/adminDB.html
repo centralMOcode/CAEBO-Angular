@@ -1,0 +1,93 @@
+<!---
+Database administration page. This page will allow developers to view the current database or insert into specific tables.
+Calls current API functions from backend to display/modify date.
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <style>
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                background-color: #f1f1f1;
+                border: 1px solid grey;
+                box-shadow: 2px 1px 1px black;
+                border-radius: 3px;
+                justify-content: center;
+                align-items: center;
+                margin: 0px 300px;
+            }
+
+            /*.flex-container > div{
+                background-color: #f44336;
+                color: white;
+                padding: 14px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+            }*/
+
+            /* a:link, a:visited {
+                background-color: #f44336;
+                color: white;
+                padding: 14px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                width: 100px;
+                margin: 5px;
+            } */
+
+            .flex-container > div {
+                box-shadow:inset 0px -2px 26px 0px #29bbff;
+	            background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	            background-color:#2dabf9;
+	            border-radius:6px;
+	            border:1px solid #0b0e07;
+	            display:inline-block;
+	            cursor:pointer;
+	            color:#ffffff;
+	            font-family:Arial;
+	            font-size:15px;
+	            padding:9px 23px;
+	            text-decoration:none;
+                text-shadow:0px 1px 7px #263666;
+                width: 150px;
+                text-align: center;
+                margin: 3px;
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+
+            .flex-heading {
+                display: flex;
+                flex-direction: column;
+                background-color: #f1f1f1;
+                border: 1px solid grey;
+                box-shadow: 2px 1px 1px black;
+                border-radius: 3px;
+                justify-content: center;
+                align-items: center;
+                margin: 3px 300px;
+            }
+
+            .title {
+                margin: auto;
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='flex-heading'><h3>This page is for database administration only. Please be cautious when modifying.</h3></div>
+        <div class='flex-container'>
+                <div><a href='view_users.html'>View All Users</a></div>
+                <div><a href='view_groups.html'>View All Groups</a></div>
+                <div><a href='group_insert.html'>Add A Group</a></div>
+        </div>
+    </body>
+</html>
