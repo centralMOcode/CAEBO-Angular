@@ -7,6 +7,7 @@ By Isaac Prost, February 2020
 
 var express = require('express');
 var router = express.Router();
+var STATUS_MESSAGE = require('../../constants/constants');
 
 // Defualt /api/users route. Returns all users and their groups;
 router.get('/', function (req, res) {
@@ -17,9 +18,17 @@ router.get('/', function (req, res) {
       if (err) throw err;
 
       if (result === undefined || result == "") {
-        res.status(500).json({ serverError: `An unexpected server error occured.` });
+        res.status(500).json({ 
+          statsuCode: 100,
+          statusDesc: 'Falure',
+          message: STATUS_MESSAGE.FAILURE_GENERIC
+        });
       } else {
-        res.status(200).json(result);
+        res.status(200).json({
+          statusCode: 0,
+          statusDesc: 'Success',
+          message: result
+        });
       }
     })
 })
@@ -35,7 +44,11 @@ router.get('/:user_id', function(req, res){
       if (result === undefined || result == "") {
         res.status(404).json({ notFound: `User with ID ${req.params.user_id} was not found` });
       } else {
-        res.status(200).json(result);
+        res.status(200).json({
+          statusCode: 0,
+          statusDesc: 'Success',
+          message: result
+        });
       }
   })
 })

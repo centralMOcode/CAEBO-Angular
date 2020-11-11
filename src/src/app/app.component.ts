@@ -8,16 +8,11 @@ import { User } from './models/caebo.constants';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'src';
-  users: User[];
 
   constructor(
     private userService: UserService
   ) {}
 
     ngOnInit() {
-      this.userService.getUsers().subscribe(data => {
-        this.users = data;
-      })
     }
 }

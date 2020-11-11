@@ -61,8 +61,12 @@ router.post('/', function(req, res) {
                         },
                         (err, token) => {
                             res.status(200).json({
-                                success: true,
-                                token: "Bearer " + token
+                                statusCode: 0,
+                                statusDesc: 'Success',
+                                message: {
+                                    success: true,
+                                    token: "Bearer " + token
+                                }
                             });
                         }
                     );
