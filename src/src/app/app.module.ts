@@ -7,13 +7,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header/header.component';
 import { DropdownDirective } from 'src/shared/dropdown.directive';
 import { HomeComponent } from './components/home/home.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
-    HomeComponent
+    HomeComponent,
+    LayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
