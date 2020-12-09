@@ -1,0 +1,9 @@
+<div *ngFor="let user of users">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="cursor: pointer;" (click)="log(user.last_name)">{{ user.first_name }}</h1>
+            <p>{{ user.last_name }}</p>
+            <button type="btn btn-danger" (click)="log(user.first_name)">Change Name</button>
+        </div>
+    </div>
+</div>
