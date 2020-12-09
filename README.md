@@ -6,13 +6,9 @@ CS4920 Spring 2020 CAEBO-Company-Hub Project
 # Developers:
 - Isaac Prost
 - Kyle Graber
-- Aaron Adams
-- Darien Hayes
-- Steffen Schwarz
-
             
 ## READ THIS PLEASE: 
-
+# OUT OF DATE
  The front-end React code is in the /CAEBO-Company-Hub/client folder. I have replicated the ideal project structure (directory wise). We want all of our components in separate folders in the components root folder (i.e. if we have a Login.js component, then create a new folder under /CAEBO-Company-Hub/client/components folder called Login.js. Name convention is capital in the filename.). With containers (clesses that will hold these components and ultimately be rendered to the DOM) do the same thing under the containers folder. Realistically we should have more component than containers. The styling files should be in the same directory with the same name as the components. We most likely will NOT have to style ur containers, as most of the styling will be done within each component.                                                                                                                                             
 * The previous explanation of the file structure is very important to the project, especially when we have many people working on it. This will save us serious headache if we all just follow the name and file creation conventions. 
 * If you have any detailed questions on this concern just let either Kyle or Isaac know. 
