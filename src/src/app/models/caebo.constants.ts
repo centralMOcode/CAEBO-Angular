@@ -11,3 +11,13 @@ export interface User {
     username: string;
     email: string;
 }
+
+export interface AuthRequest {
+    email: string;
+    pass: string;
+}
+
+export interface AuthResponse {
+    success: boolean;
+    token: string;
+}

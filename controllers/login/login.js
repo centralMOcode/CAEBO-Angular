@@ -12,7 +12,6 @@ const ValidateLoginInput = require("../../validation/login");
 router.post('/', function(req, res) {
     const { errors, isValid } = ValidateLoginInput(req.body);
 
-    // Check validation
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -29,7 +28,6 @@ router.post('/', function(req, res) {
                     return res.status(404).json({ passwordincorrect: "Password is incorrect"});
                 } else {
                     // Email and password are a match
-                    console.log(result);
                     var userid = JSON.stringify(result[0].user_id);
                     var username = JSON.stringify(result[0].username);
                     var first_name = JSON.stringify(result[0].first_name);
@@ -39,8 +37,6 @@ router.post('/', function(req, res) {
                     var group_admin = JSON.stringify(result[0].group_admin);
                     var group_name = JSON.stringify(result[0].group_name);
 
-                    // Create JWT payload, we can modify will more data if need be
-                    // I'm thinking we can reference userid to query data from our api/users/:user_id route
                     const payload = {
                         id: userid,
                         username: username,
@@ -52,12 +48,11 @@ router.post('/', function(req, res) {
                         group_name: group_name
                     };
 
-                    // Sign token
                     jwt.sign(
                         payload,
                         keys.secretOrKey,
                         {
-                            expiresIn: 31556926 
+                            expiresIn: 1200000
                         },
                         (err, token) => {
                             res.status(200).json({
