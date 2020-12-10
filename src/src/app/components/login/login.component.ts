@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import * as jwt_decode from 'jwt-decode';
+// import * as jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 import { AuthRequest } from 'src/app/models/caebo.constants';
 
 @Component({
@@ -45,16 +46,24 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(payload).subscribe(
       (data) => {
-        console.log(data);
+        const userData = this.getDecodedAccessToken(data.message?.token);
         this.successMessage = 'Successful Auth';
       },
       (error) => {
-        console.log(error);
         this.message = 'Something went wrong, try again.';
         this.submitting = false;
       },
       () => { this.submitting = false; }
     )
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    }
+    catch(error) {
+      return null;
+    }
   }
 
 }

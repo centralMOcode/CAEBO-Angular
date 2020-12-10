@@ -52,7 +52,7 @@ router.post('/', function(req, res) {
                         payload,
                         keys.secretOrKey,
                         {
-                            expiresIn: 31556926 
+                            expiresIn: 1200000
                         },
                         (err, token) => {
                             res.status(200).json({
