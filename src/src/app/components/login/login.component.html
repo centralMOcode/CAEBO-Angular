@@ -1,18 +1,46 @@
-<div class="container">
+<div class="container p-4">
     <div class="d-flex justify-content-center">
         <div class="card shadow w-50 align-items-center">
             <div class="card-body w-75">
                 <h3 class="card-title">CAEBO Secure Login</h3>
                 <hr>
-                <form>
+                <form [formGroup]='loginForm' (ngSubmit)="onSubmit()">
                     <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" placeholder="example@company.com" autofocus>
+                    <input
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        [ngClass]="{ 'focus-invalid' : f.email?.invalid && (f.email?.dirty || f.email?.touched) }"
+                        formControlName="email"
+                        placeholder="example@company.com"
+                        autofocus>
+                    <div *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)" class="text-danger">
+                        <div *ngIf="f.email.errors?.required">
+                            Please enter an email address.
+                        </div>
+                        <div *ngIf="f.email.errors?.email">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
                     <br>
                     <label for="pass" class="form-label">Password</label>
-                    <input type="password" class="form-control" placeholder="xxxxxxxxxxxx">
+                    <input 
+                        id="password"
+                        type="password"
+                        class="form-control"
+                        [ngClass]="{ 'focus-invalid' : f.password?.invalid && (f.password?.dirty || f.password?.touched) }"
+                        formControlName="password"
+                        placeholder="xxxxxxxxxxxx">
                     <br>
-                    <input type="submit" class="btn btn-primary">
+                    <button class="btn btn-primary" type="submit" [disabled]="submitting">
+                        <span *ngIf="!submitting">{{ submitting ? 'Logging in' : 'Log in' }}</span>
+                        <mat-spinner *ngIf="submitting" aria-label="submitting" color="accent" [diameter]="30"></mat-spinner>
+                    </button>
                 </form>
+                <div class="d-flex justify-content-center">
+                    <span *ngIf="message" class="text-danger">{{ message }}</span>
+                    <span *ngIf="successMessage" class="text-success">{{ successMessage }}</span>
+                </div>
             </div>
         </div>
     </div>
