@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
-// import * as jwt_decode from 'jwt-decode';
 import jwt_decode from 'jwt-decode';
-import { AuthRequest } from 'src/app/models/caebo.constants';
+import { AuthRequest, User } from 'src/app/models/caebo.constants';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +14,8 @@ export class LoginComponent implements OnInit {
   message: string;
   successMessage: string;
   submitting: boolean;
+  userData: User;
+  userGroupAdmin: boolean;
   
   get f() { return this.loginForm.controls; }
 
@@ -33,8 +34,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitting = true;
+    this.clearMessages();
+
     if(this.loginForm.invalid) {
-      this.message = 'Not valid';
       this.submitting = false;
       return;
     }
@@ -46,8 +48,13 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(payload).subscribe(
       (data) => {
-        const userData = this.getDecodedAccessToken(data.message?.token);
-        this.successMessage = 'Successful Auth';
+        if(data.statusCode !== 0) {
+          this.message = 'Invalid email or password.';
+        } else {
+          this.userData = this.getDecodedAccessToken(data.message?.token);
+          this.userGroupAdmin = this.userData.groupAdmin === 1;
+          this.successMessage = 'Successful Authentication.';
+        }
       },
       (error) => {
         this.message = 'Something went wrong, try again.';
@@ -64,6 +71,12 @@ export class LoginComponent implements OnInit {
     catch(error) {
       return null;
     }
+  }
+
+
+  clearMessages() {
+    this.message = '';
+    this.successMessage = '';
   }
 
 }

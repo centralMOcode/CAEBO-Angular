@@ -10,6 +10,8 @@ export interface User {
     lastName: string;
     username: string;
     email: string;
+    groupName: string;
+    groupAdmin: number;
 }
 
 export interface AuthRequest {
@@ -20,4 +22,5 @@ export interface AuthRequest {
 export interface AuthResponse {
     success: boolean;
     token: string;
+    error?: string;
 }
