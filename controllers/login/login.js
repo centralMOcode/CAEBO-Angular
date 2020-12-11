@@ -20,32 +20,44 @@ router.post('/', function(req, res) {
     var checkSQL = 'SELECT * from user WHERE email=?;';
     connectDB.con.query(checkSQL, [req.body.email], function (err, result, fields) {
         if (result === undefined || result == ""){
-            return res.status(404).json({ emailnotfound: "Email not found"});
+            return res.status(200).json({ 
+                statusCode: 100,
+                statusDesc: 'Failure',
+                message: {
+                    error: "Email not found"
+                }
+            });
         } else {
             var sql = 'SELECT user_id, first_name, last_name, username, email, group_id, group_admin, groups.group_name FROM user NATURAL JOIN groups WHERE email=? AND pass=SHA2(?, 512);';
             connectDB.con.query(sql, [req.body.email, req.body.pass], function (err, result, fields) {
                 if (result === undefined || result == "") {
-                    return res.status(404).json({ passwordincorrect: "Password is incorrect"});
+                    return res.status(200).json({
+                        statusCode: 200,
+                        statusDesc: 'Failure',
+                        message: {
+                            error: "Password is incorrect"
+                        }
+                    });
                 } else {
-                    // Email and password are a match
-                    var userid = JSON.stringify(result[0].user_id);
-                    var username = JSON.stringify(result[0].username);
-                    var first_name = JSON.stringify(result[0].first_name);
-                    var last_name = JSON.stringify(result[0].last_name);
-                    var email = JSON.stringify(result[0].email);
-                    var group_id = JSON.stringify(result[0].group_id);
-                    var group_admin = JSON.stringify(result[0].group_admin);
-                    var group_name = JSON.stringify(result[0].group_name);
-
+                    // const payload = {
+                    //     id: JSON.stringify(result[0].user_id),
+                    //     username: JSON.stringify(result[0].username),
+                    //     firstName: JSON.stringify(result[0].first_name),
+                    //     lastName: JSON.stringify(result[0].last_name),
+                    //     email: JSON.stringify(result[0].email),
+                    //     groupID: JSON.stringify(result[0].group_id),
+                    //     groupAdmin: JSON.stringify(result[0].group_admin),
+                    //     groupName: JSON.stringify(result[0].group_name)
+                    // };
                     const payload = {
-                        id: userid,
-                        username: username,
-                        first_name: first_name,
-                        last_name: last_name,
-                        email: email,
-                        group_id: group_id,
-                        group_admin: group_admin,
-                        group_name: group_name
+                        id: result[0].user_id,
+                        username: result[0].username,
+                        firstName: result[0].first_name,
+                        lastName: result[0].last_name,
+                        email: result[0].email,
+                        groupID: result[0].group_id,
+                        groupAdmin: result[0].group_admin,
+                        groupName: result[0].group_name
                     };
 
                     jwt.sign(

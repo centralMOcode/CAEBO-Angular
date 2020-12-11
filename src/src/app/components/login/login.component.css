@@ -3,3 +3,11 @@
     border: 1px solid red;
     box-shadow: 0 0 5px red;
 }
+
+.group-admin-text {
+    font-size: 1.5rem;
+}
+
+.group-admin-text-color {
+    color: #d49100;
+}
