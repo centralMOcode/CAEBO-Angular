@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApiResponse, User } from 'src/app/models/caebo.constants';
-import { UserService } from 'src/app/services/user/user.service';
+import { SessionService } from 'src/app/services/auth/session.service';
 
 
 @Component({
@@ -9,29 +9,20 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  users: User[];
+export class HomeComponent implements OnInit {
+  userSession;
+  userGroupAdmin: boolean;
+  submitting: boolean;
   userSubscription: Subscription;
+  name: string;
 
-  constructor(private service: UserService) { }
+  constructor(
+    private session: SessionService
+    ) { }
 
   ngOnInit(): void {
-    this.userSubscription = this.service.getUsers().subscribe(
-      (data) => {
-        this.users = data.message;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {  }
-    );
+    this.userSession = this.session.getSessionValue();
+    this.userGroupAdmin = this.userSession.user.groupAdmin === 1;
   }
 
-  log(name: string) {
-    console.log(name);
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription?.unsubscribe();
-  }
 }
