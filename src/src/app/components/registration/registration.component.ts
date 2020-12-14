@@ -62,6 +62,7 @@ export class RegistrationComponent implements OnInit {
           }
           this.callLoginAndRedirect(payload);
         } else {
+          console.log(data);
           this.message = MESSAGES.GENERIC_ERROR;
         }
       },
