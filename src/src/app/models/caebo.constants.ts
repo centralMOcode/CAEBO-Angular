@@ -24,3 +24,23 @@ export interface AuthResponse {
     token: string;
     error?: string;
 }
+
+export interface RegisterRequest {
+    first_name: string;
+    last_name: string;
+    username: string;
+    email: string;
+    pass: string;
+    pass2: string;
+}
+
+export interface RegisterResponse {
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+}
+
+export const MESSAGES = {
+    GENERIC_ERROR: 'Something went wrong. Please refresh the page and try again.',
+}

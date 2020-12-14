@@ -18,6 +18,7 @@
                             type="email"
                             formControlName="email"
                             placeholder="example@company.com"
+                            [disabled]="submitting"
                             >
                     </mat-form-field>
                     <div *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)" class="text-danger">
@@ -37,13 +38,21 @@
                             type="password"
                             formControlName="password"
                             placeholder="xxxxxxxxxxxx"
+                            [disabled]="submitting"
                             >
                     </mat-form-field>
                     <br>
-                    <button mat-raised-button color="accent" type="submit" [disabled]="submitting || loginForm.invalid">
-                        <span *ngIf="!submitting">{{ submitting ? 'Logging in' : 'Log in' }}</span>
-                        <mat-spinner *ngIf="submitting" aria-label="submitting" color="primary" [diameter]="30"></mat-spinner>
-                    </button>
+                    <div class="row">
+                        <div class="col md-1">
+                            <button mat-raised-button color="accent" type="submit" [disabled]="submitting || loginForm.invalid">
+                                <span *ngIf="!submitting">{{ submitting ? 'Logging in' : 'Log in' }}</span>
+                                <mat-spinner *ngIf="submitting" aria-label="submitting" color="primary" [diameter]="30"></mat-spinner>
+                            </button>
+                        </div>
+                        <div class="p-2">
+                            <span>No account? <a href="/register">Sign up!</a></span>
+                        </div>
+                    </div>
                 </form>
                 <div class="d-flex justify-content-center">
                     <span *ngIf="message" class="text-danger">{{ message }}</span>

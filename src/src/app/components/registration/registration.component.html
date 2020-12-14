@@ -1,0 +1,115 @@
+<div class="container p-4">
+    <div class="d-flex justify-content-center">
+        <div class="card shadow w-50 align-items-center">
+            <div class="card-body w-75">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <h3 class="card-title">CAEBO User Registration</h3>
+                    </div>
+                </div>
+                <hr>
+                <form [formGroup]='registerForm' (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>First Name</mat-label>
+                        <input
+                            matInput
+                            class="mat-custom-width"
+                            id="firstName"
+                            type="text"
+                            formControlName="firstName"
+                            placeholder="First Name"
+                            >
+                    </mat-form-field>
+                    <!-- <div *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)" class="text-danger p-1">
+                        <p *ngIf="f.firstName.errors?.required">
+                            Please enter first name.
+                        </p>
+                    </div> -->
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>Last Name</mat-label>
+                        <input
+                            matInput
+                            class="mat-custom-width"
+                            id="lastName"
+                            type="text"
+                            formControlName="lastName"
+                            placeholder="Last Name"
+                            >
+                    </mat-form-field>
+                    <!-- <div *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)" class="text-danger">
+                        <span *ngIf="f.lastName.errors?.required">
+                            Please enter last name.
+                        </span>
+                    </div> -->
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>Username</mat-label>
+                        <input
+                            matInput
+                            class="mat-custom-width"
+                            id="userName"
+                            type="text"
+                            formControlName="userName"
+                            placeholder="Username"
+                            >
+                    </mat-form-field>
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>Email</mat-label>
+                        <input
+                            matInput
+                            class="mat-custom-width"
+                            id="email"
+                            type="email"
+                            formControlName="email"
+                            placeholder="example@company.com"
+                            >
+                    </mat-form-field>
+                    <!-- <div *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)" class="text-danger">
+                        <div *ngIf="f.email.errors?.required">
+                            Please enter an email address.
+                        </div>
+                        <div *ngIf="f.email.errors?.email">
+                            Please enter a valid email address.
+                        </div>
+                    </div> -->
+                    <br>
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>Password</mat-label>
+                        <input
+                            matInput
+                            id="password"
+                            type="password"
+                            formControlName="password"
+                            placeholder="xxxxxxxxxxxx"
+                            >
+                    </mat-form-field>
+                    <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                        <mat-label>Confirm Password</mat-label>
+                        <input
+                            matInput
+                            id="passwordConfirm"
+                            type="password"
+                            formControlName="passwordConfirm"
+                            placeholder="xxxxxxxxxxxx"
+                            >
+                    </mat-form-field>
+                    <br>
+                    <div class="row">
+                        <div class="col md-1">
+                            <button mat-raised-button color="accent" type="submit" [disabled]="submitting || registerForm.invalid">
+                                <span *ngIf="!submitting">Sign up</span>
+                                <mat-spinner *ngIf="submitting" aria-label="submitting" color="primary" [diameter]="30"></mat-spinner>
+                            </button>
+                        </div>
+                        <div class="p-2">
+                            <span>Have an account? <a href="/login">Login!</a></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="d-flex justify-content-center">
+                    <span *ngIf="message" class="text-danger">{{ message }}</span>
+                    <span *ngIf="successMessage" class="text-success">{{ successMessage }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
