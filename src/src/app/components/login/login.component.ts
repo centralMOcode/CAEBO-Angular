@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import jwt_decode from 'jwt-decode';
 import { AuthRequest, User } from 'src/app/models/caebo.constants';
+import { SessionService } from 'src/app/services/auth/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private session: SessionService,
+    private router: Router
+
   ) { 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -51,9 +55,7 @@ export class LoginComponent implements OnInit {
         if(data.statusCode !== 0) {
           this.message = 'Invalid email or password.';
         } else {
-          this.userData = this.getDecodedAccessToken(data.message?.token);
-          this.userGroupAdmin = this.userData.groupAdmin === 1;
-          this.successMessage = 'Successful Authentication.';
+          this.router.navigate(['/home']);
         }
       },
       (error) => {
@@ -63,16 +65,6 @@ export class LoginComponent implements OnInit {
       () => { this.submitting = false; }
     )
   }
-
-  getDecodedAccessToken(token: string): any {
-    try {
-      return jwt_decode(token);
-    }
-    catch(error) {
-      return null;
-    }
-  }
-
 
   clearMessages() {
     this.message = '';

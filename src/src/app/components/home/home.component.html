@@ -1,9 +1,28 @@
-<div *ngFor="let user of users">
-    <div class="card">
-        <div class="card-body">
-            <h1 style="cursor: pointer;" (click)="log(user.last_name)">{{ user.first_name }}</h1>
-            <p>{{ user.last_name }}</p>
-            <button type="btn btn-danger" (click)="log(user.first_name)">Change Name</button>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="p-2">
+            <h1>Home</h1>
+        </div>
+        <!-- <div class="p-2">
+            <button mat-raised-button color="primary" type="submit" (click)="logout()">
+                <span>Logout</span>
+            </button>
+        </div> -->
+    </div>
+    <div *ngIf="userSession.user && !submitting" class="d-flex justify-content-center p-4">
+        <div class="card shadow w-50 d-flex align-items-center">
+                <div class="p-2">
+                    <h3>{{ userSession.user.lastName }}, {{ userSession.user.firstName }}</h3>
+                </div>
+                <div *ngIf="!userGroupAdmin" class="p-2">
+                    <h4><em>{{ userSession.user.groupName }}</em></h4>
+                </div>
+                <div *ngIf="userGroupAdmin" class="p-2">
+                    <span class="group-admin-text"><em>{{ userSession.user.groupName }} - </em><span class="group-admin-text group-admin-text-color">Admin</span></span>
+                </div>
+                <div class="p-2">
+                    <span>"{{ userSession.user.username }}"</span>
+                </div>
         </div>
     </div>
 </div>

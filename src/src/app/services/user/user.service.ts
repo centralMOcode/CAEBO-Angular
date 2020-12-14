@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse, User } from '../../models/caebo.constants';
+import { API } from 'src/shared/api/api.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,12 @@ export class UserService {
   ) { }
 
   getUsers(): Observable<ApiResponse<User[]>> {
-    return this.http.get<ApiResponse<User[]>>("//localhost:5000/api/users");
+    const url = `//localhost:5000${API.GET_USERS}`;
+    return this.http.get<ApiResponse<User[]>>(url);
+  }
+
+  getUser(id: number): Observable<ApiResponse<User>> {
+    const url = `//localhost:5000${API.GET_USER}/${id}`;
+    return this.http.get<ApiResponse<User>>(url);
   }
 }
