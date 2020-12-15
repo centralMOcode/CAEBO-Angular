@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
-import { ApiResponse, AuthRequest, AuthResponse } from 'src/app/models/caebo.constants';
+import { ApiResponse, AuthRequest, AuthResponse, RegisterRequest, RegisterResponse } from 'src/app/models/caebo.constants';
 import { API } from 'src/shared/api/api.constants';
 import { SessionService } from './session.service';
 
@@ -30,6 +30,11 @@ export class AuthService {
     );
   }
 
+  register(credentials: RegisterRequest): Observable<ApiResponse<RegisterResponse>> {
+    const url = `//localhost:5000${API.REGISTER}`;
+    return this.http.post<ApiResponse<RegisterResponse>>(url, credentials);
+  }
+
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);
@@ -37,5 +42,9 @@ export class AuthService {
     catch(error) {
       return null;
     }
+  }
+
+  statusCheck(statusCode: number) {
+    return statusCode === 0;
   }
 }

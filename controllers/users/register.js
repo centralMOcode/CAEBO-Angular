@@ -21,7 +21,7 @@ router.post("/", function(req, res) {
 
     // Check validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(200).json(errors);
     }
 
     var connectDB = require('../../connectDB');
@@ -50,15 +50,31 @@ router.post("/", function(req, res) {
                                 email: req.body.email,
                             }
                             
-                            res.status(200).json(newUser);
+                            res.status(200).json({
+                                statusCode: 0,
+                                statusDesc: 'Success',
+                                message: newUser
+                            });
                     })
 
                 } else {
-                    res.status(404).json({ usernameunavailable: "Username is already in use" });
+                    res.status(200).json({ 
+                        statusCode: -1,
+                        statusDesc: 'Failure',
+                        message: {
+                            error: "Username is already in use"
+                        }
+                    });
                 }
             })
         } else {
-            res.status(404).json({ emailunavailable: "Email is already in use" });
+            res.status(200).json({ 
+                statusCode: -1,
+                statusDesc: 'Failure',
+                message: {
+                    error: "Email is already in use"
+                }
+             });
         }
     })
 
