@@ -38,6 +38,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     this.submitting = true;
+    this.message = '';
 
     if (this.registerForm.invalid) {
       this.submitting = false;
@@ -62,8 +63,7 @@ export class RegistrationComponent implements OnInit {
           }
           this.callLoginAndRedirect(payload);
         } else {
-          console.log(data);
-          this.message = MESSAGES.GENERIC_ERROR;
+          this.message = data.message.error;
         }
       },
       (error) => {

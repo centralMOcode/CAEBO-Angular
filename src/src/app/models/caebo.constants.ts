@@ -39,6 +39,7 @@ export interface RegisterResponse {
     firstName: string;
     lastName: string;
     email: string;
+    error?: string;
 }
 
 export const MESSAGES = {
