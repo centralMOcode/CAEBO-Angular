@@ -36,6 +36,7 @@ app.use(session({
 }));
 
 var users = require('./controllers/users/users');
+var getEmails = require('./controllers/emails/getEmails');
 var deleteUser = require('./controllers/users/deleteuser');
 var register = require('./controllers/users/register');
 var groups = require('./controllers/groups/groups');
@@ -65,6 +66,7 @@ app.use('/api/users/login', login);
 app.use('/api/users/reauth', reauth);
 app.use('/api/users/update', updateUser);
 app.use('/api/users/group', getUserByGroup);
+app.use('/api/users/emails', getEmails);
 app.use('/api/dashboard', dashboard);
 app.use('/api/groups', groups);
 app.use('/api/groups/groupadd', newgroup);
