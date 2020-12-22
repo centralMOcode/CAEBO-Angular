@@ -12,10 +12,13 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import { RegistrationComponent } from 'src/app/components/registration/registration.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     HomeComponent,
     LayoutComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { RegistrationComponent } from './components/registration/registration.co
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

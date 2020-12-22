@@ -1,11 +1,15 @@
-<div class="container">
-    <div class="d-flex justify-content-center align-items-center">
+<!-- <div class="container"> -->
+    <!-- <div class="d-flex justify-content-center align-items-center">
         <div class="p-2">
             <h1>Home</h1>
         </div>
-    </div>
+    </div> -->
     <div *ngIf="userSession.user && !submitting" class="d-flex justify-content-center p-4">
         <div class="card shadow w-50 d-flex align-items-center">
+                <div class="p-2">
+                    <h1>Home</h1>
+                </div>
+                <hr>
                 <div class="p-2">
                     <h3>{{ userSession.user.lastName }}, {{ userSession.user.firstName }}</h3>
                 </div>
@@ -20,4 +24,4 @@
                 </div>
         </div>
     </div>
-</div>
+<!-- </div> -->

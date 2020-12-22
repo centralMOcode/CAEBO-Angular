@@ -7,3 +7,10 @@
 .mat-form-field {
     width: 100%;
 }
+
+.login-header-bar {
+    background-color: #4c97d9;
+    color: white;
+    width: 100%;
+    padding: 10px;
+}

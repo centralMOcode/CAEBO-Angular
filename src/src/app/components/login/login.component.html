@@ -1,13 +1,10 @@
 <div class="container p-4">
     <div class="d-flex justify-content-center">
         <div class="card shadow w-50 align-items-center">
+            <div class="d-flex justify-content-center login-header-bar rounded">
+                <h3 class="card-title">CAEBO Secure Login</h3>
+            </div>
             <div class="card-body w-75">
-                <div class="d-flex justify-content-center">
-                    <div>
-                        <h3 class="card-title">CAEBO Secure Login</h3>
-                    </div>
-                </div>
-                <hr>
                 <form [formGroup]='loginForm' (ngSubmit)="onSubmit()">
                     <mat-form-field appearance="standard" [color]="'accent'">
                         <mat-label>Email</mat-label>
@@ -44,7 +41,7 @@
                     <br>
                     <div class="row">
                         <div class="col md-1">
-                            <button mat-raised-button color="accent" type="submit" [disabled]="submitting || loginForm.invalid">
+                            <button mat-raised-button color="'accent'" type="submit" [disabled]="submitting || loginForm.invalid">
                                 <span *ngIf="!submitting">{{ submitting ? 'Logging in' : 'Log in' }}</span>
                                 <mat-spinner *ngIf="submitting" aria-label="submitting" color="primary" [diameter]="30"></mat-spinner>
                             </button>

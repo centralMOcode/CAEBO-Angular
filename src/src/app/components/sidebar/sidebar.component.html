@@ -1,0 +1,14 @@
+<nav class="nav flex-column">
+    <div>
+        <h3>{{ page }}</h3>
+    </div>
+    <div class="nav-item p-2">
+        <a [ngClass]="{ 'sidebar-link-active' : page === 'Home' }" class="nav-link" aria-current="page" href="/home">Home</a>
+    </div>
+    <div class="nav-item p-2">
+        <a [ngClass]="{ active : page === 'Group' }" class="nav-link" aria-current="page" href="/home">Group</a>
+    </div>
+    <div class="nav-item p-2">
+        <a [ngClass]="{ active : page === 'Profile' }" class="nav-link" aria-current="page" href="/home">Profile</a>
+    </div>
+</nav>
