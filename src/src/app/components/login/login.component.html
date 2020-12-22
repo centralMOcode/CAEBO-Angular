@@ -41,7 +41,7 @@
                     <br>
                     <div class="row">
                         <div class="col md-1">
-                            <button mat-raised-button color="'accent'" type="submit" [disabled]="submitting || loginForm.invalid">
+                            <button mat-raised-button color="accent" type="submit" [disabled]="submitting || loginForm.invalid">
                                 <span *ngIf="!submitting">{{ submitting ? 'Logging in' : 'Log in' }}</span>
                                 <mat-spinner *ngIf="submitting" aria-label="submitting" color="primary" [diameter]="30"></mat-spinner>
                             </button>
