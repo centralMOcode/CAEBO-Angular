@@ -39,16 +39,6 @@ router.post('/', function(req, res) {
                         }
                     });
                 } else {
-                    // const payload = {
-                    //     id: JSON.stringify(result[0].user_id),
-                    //     username: JSON.stringify(result[0].username),
-                    //     firstName: JSON.stringify(result[0].first_name),
-                    //     lastName: JSON.stringify(result[0].last_name),
-                    //     email: JSON.stringify(result[0].email),
-                    //     groupID: JSON.stringify(result[0].group_id),
-                    //     groupAdmin: JSON.stringify(result[0].group_admin),
-                    //     groupName: JSON.stringify(result[0].group_name)
-                    // };
                     const payload = {
                         id: result[0].user_id,
                         username: result[0].username,
