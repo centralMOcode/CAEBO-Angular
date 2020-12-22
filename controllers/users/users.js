@@ -12,7 +12,7 @@ var STATUS_MESSAGE = require('../../constants/constants');
 // Defualt /api/users route. Returns all users and their groups;
 router.get('/', function (req, res) {
     var connectDB  = require('../../connectDB.js');
-    var sql = 'SELECT user_id, first_name, last_name, username, email FROM user WHERE 1';
+    var sql = 'SELECT user_id, first_name, last_name, username FROM user WHERE 1';
 
     connectDB.con.query(sql, function (err, result){
       if (err) throw err;
@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
 // USE: /api/users/<user_id>. Queries the data of the specified user
 router.get('/:user_id', function(req, res){
     var connectDB  = require('../../connectDB.js');
-    var sql = 'SELECT user_id, first_name, last_name, username, email FROM user WHERE user_id=?';
+    var sql = 'SELECT user_id, first_name, last_name, username FROM user WHERE user_id=?';
 
     connectDB.con.query(sql, [req.params.user_id], function (err, result){
       if (err) throw err;

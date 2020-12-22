@@ -6,6 +6,7 @@ var express = require('express');
 var router = express.Router();
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const { con } = require('../../connectDB');
 
 const ValidateLoginInput = require("../../validation/login");
 
@@ -17,7 +18,7 @@ router.post('/', function(req, res) {
     }
     
     var connectDB = require("../../connectDB");
-    var checkSQL = 'SELECT * from user WHERE email=?;';
+    var checkSQL = 'SELECT * from user NATURAL JOIN email WHERE email=?;';
     connectDB.con.query(checkSQL, [req.body.email], function (err, result, fields) {
         if (result === undefined || result == ""){
             return res.status(200).json({ 
@@ -28,7 +29,7 @@ router.post('/', function(req, res) {
                 }
             });
         } else {
-            var sql = 'SELECT user_id, first_name, last_name, username, email, group_id, group_admin, groups.group_name FROM user NATURAL JOIN groups WHERE email=? AND pass=SHA2(?, 512);';
+            var sql = "SELECT * FROM user NATURAL JOIN email NATURAL JOIN groups WHERE email=? AND pass=SHA2(?, 512) AND is_primary=true;";
             connectDB.con.query(sql, [req.body.email, req.body.pass], function (err, result, fields) {
                 if (result === undefined || result == "") {
                     return res.status(200).json({
@@ -54,7 +55,7 @@ router.post('/', function(req, res) {
                         payload,
                         keys.secretOrKey,
                         {
-                            expiresIn: 1200000
+                            expiresIn: 2000
                         },
                         (err, token) => {
                             res.status(200).json({
