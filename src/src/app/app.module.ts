@@ -16,10 +16,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
 import { RegistrationComponent } from 'src/app/components/registration/registration.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmailComponent } from './components/modals/email/email.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RegistrationComponent,
     SidebarComponent,
-    ProfileComponent
+    ProfileComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatInputModule,
     MatButtonModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

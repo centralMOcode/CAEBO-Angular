@@ -31,7 +31,7 @@
                     <strong>Primary Email</strong>
                     <hr class="hr-custom">
                     <p class="user-info-tag">{{ userSession.user.email }}</p>
-                    <p><a class="link-small user-info-change-link" href="/profile">Edit</a></p>
+                    <p><a class="link-small user-info-change-link" (click)="open(content)">Edit</a></p>
                 </div>
                 <div class="col-3">
                     <strong>Primary Phone</strong>
@@ -54,6 +54,16 @@
             </div>
         </div>
     </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header modal-header-dark">
+          <h4 class="modal-title" id="modal-basic-title">Update Information</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <app-email [userID]="userSession.user.id"></app-email>
+      </ng-template>
 </div>
         <!-- <div class="row">
             <div class="col-12">

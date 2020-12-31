@@ -53,3 +53,8 @@
     margin: 0;
     margin-bottom: 5px !important;
 }
+
+.modal-header-dark {
+    background: #272c33;
+    color: white;
+}

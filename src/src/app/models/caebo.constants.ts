@@ -14,6 +14,12 @@ export interface User {
     groupAdmin: number;
 }
 
+export interface UserEmail {
+    email: string;
+    is_primary: boolean;
+    is_verified: boolean;
+}
+
 export interface AuthRequest {
     email: string;
     pass: string;
