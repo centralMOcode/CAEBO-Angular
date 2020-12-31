@@ -1,0 +1,55 @@
+.group-admin-text {
+    font-size: 1.2rem;
+}
+
+.group-admin-text-color {
+    color: #d49100;
+}
+
+.breadcrumbs {
+    display: inline-block;
+    margin-top: 0;
+    padding: 0 5px;
+    width: 100%;
+}
+
+.page-header {
+    min-height: 50px;
+    margin: 0;
+    padding: 0 15px;
+    border-bottom: 0;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.content {
+    float: left;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+.link-small {
+    padding-left: 5px;
+    text-decoration: none;
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+.user-info-tag {
+    margin-bottom: 0;
+}
+
+.user-info-change-link {
+    padding-left: 0 !important;
+}
+
+.hr-custom {
+    margin: 0;
+    margin-bottom: 5px !important;
+}

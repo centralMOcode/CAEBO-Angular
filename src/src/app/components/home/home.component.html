@@ -1,20 +1,15 @@
-<div *ngIf="userSession.user && !submitting" class="d-flex justify-content-center p-4">
-    <div class="card shadow w-100 d-flex align-items-center">
-            <div class="p-2">
-                <h1>Home</h1>
-            </div>
-            <hr>
-            <div class="p-2">
-                <h3>{{ userSession.user.lastName }}, {{ userSession.user.firstName }}</h3>
-            </div>
-            <div *ngIf="!userGroupAdmin" class="p-2">
-                <h4><em>{{ userSession.user.groupName }}</em></h4>
-            </div>
-            <div *ngIf="userGroupAdmin" class="p-2">
-                <span class="group-admin-text"><em>{{ userSession.user.groupName }} - </em><span class="group-admin-text group-admin-text-color">Admin</span></span>
-            </div>
-            <div class="p-2">
-                <span>"{{ userSession.user.username }}"</span>
-            </div>
+<div class="breadcrumbs">
+    <div class="col-12">
+        <div class="page-header float-left">
+            <h1>Dashboard</h1>
+            <p><em>Central hub for all things related to you.</em></p>
+        </div>
+    </div>
+</div>
+<div class="content mt-3">
+    <div class="card shadow w-100">
+        <div class="card-body">
+            <h1>Home component</h1>
+        </div>
     </div>
 </div>

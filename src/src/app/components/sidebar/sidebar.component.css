@@ -3,6 +3,23 @@
     height: 100%;
 }
 
+.left-panel {
+    padding: 0 20px;
+    width: 200px;
+    background: #272c33;
+    display: inline-block;
+    height: 100vh;
+    min-height: 100%;
+    vertical-align: top;
+    transition: width .3s ease;
+}
+
+.active {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
 .sidebar-link-active {
     background-color: #c6c6c6;
     box-shadow: 2px 2px 2px #e3e3e3;
@@ -14,4 +31,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.sidebar-menu-spacing {
+    padding-bottom: 10px;
 }

@@ -1,7 +1,132 @@
-<div class="d-flex justify-content-center p-4">
-    <div class="card shadow w-100 d-flex align-items-center">
-        <div class="p-2">
-            <h1>Profile</h1>
+<div class="breadcrumbs">
+    <div class="col-12">
+        <div class="page-header float-left">
+            <h1>Profile Information</h1>
+            <p><em>View and manage your profile information.</em></p>
         </div>
     </div>
 </div>
+<div class="content mt-3">
+    <!-- <div class="alert alert-success alert-dismissible fade show">
+        <span>{{ alertMessage }}</span>
+    </div> -->
+    <div class="card shadow w-100">
+        <div class="card-body">
+            <div class="d-flex justify-content-center align-middle">
+                <h4 class="mb-0">Group Info</h4>
+            </div>
+            <p>{{ userGroup ? userGroup : 'No Group' }}</p>
+            <span *ngIf="!userGroupAdmin"><span class="group-admin-text"><strong>Status: </strong><span class="group-admin-text">Member</span></span><a class="link-small" href="/profile">View Group Page</a></span>
+            <span *ngIf="userGroupAdmin"><span class="group-admin-text"><strong>Status: </strong><span class="group-admin-text group-admin-text-color">Admin</span></span><a class="link-small" href="/profile">Manage Group</a></span>
+        </div>
+    </div>
+    <br>
+    <div class="card shadow w-100">
+        <div class="card-body">
+            <div class="d-flex justify-content-center align-middle">
+                <h4 class="mb-0">Contact Info</h4>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <strong>Primary Email</strong>
+                    <hr class="hr-custom">
+                    <p class="user-info-tag">{{ userSession.user.email }}</p>
+                    <p><a class="link-small user-info-change-link" href="/profile">Edit</a></p>
+                </div>
+                <div class="col-3">
+                    <strong>Primary Phone</strong>
+                    <hr class="hr-custom">
+                    <p class="user-info-tag">(555) 555-5555</p>
+                    <p><a class="link-small user-info-change-link" href="/profile">Edit</a></p>
+                </div>
+                <div class="col-3">
+                    <strong>Display Name</strong>
+                    <hr class="hr-custom">
+                    <p class="user-info-tag">{{ userSession.user.username }}</p>
+                    <p><a class="link-small user-info-change-link" href="/profile">Edit</a></p>
+                </div>
+                <div class="col-3">
+                    <strong>Account Name</strong>
+                    <hr class="hr-custom">
+                    <p class="user-info-tag">{{ userSession.user.firstName }} {{ userSession.user.lastName }}</p>
+                    <p><a class="link-small user-info-change-link" href="/profile">Edit</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- <div class="row">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4 class="mb-0">Group Info</h4>
+                        <p>{{ userGroup }}</p>
+                        <p *ngIf="!userGroupAdmin"><strong>Status: </strong>Member</p>
+                        <p *ngIf="userGroupAdmin"><strong>Status: </strong>Admin</p>
+                    </div>
+                </div>
+            </div> -->
+        <!-- </div> -->
+        <!-- <div class="card shadow w-100">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <span class="group-admin-text">{{ userSession.user.firstName }} {{ userSession.user.lastName }}</span>
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="card shadow w-25">
+                    <div class="d-flex justify-content-center">
+                        <h5>Group</h5>
+                    </div>
+                    <div *ngIf="!userGroupAdmin" class="p-2">
+                        <span>{{ userGroup }}</span>
+                    </div>
+                    <div *ngIf="userGroupAdmin">
+                        <span class="group-admin-text"><em>{{ userGroup }} - </em><span class="group-admin-text group-admin-text-color">Admin</span></span><a class="link-small" href="/profile">Group Page</a>
+                    </div>
+                </div>
+                <div class="card shadow w-25 profile-card-spacing-custom">
+                    <div class="d-flex justify-content-center">
+                        <h5>Contact Info</h5>
+                    </div>
+                    <div class="p-2">
+                        Primary Email - {{ userSession.user.email }} <a class="link-small" (click)="onChangeClicked()">Change</a>
+                    </div>
+                    <div *ngIf="showForm" class="p-2">
+                        <form>
+                            <mat-form-field appearance="fill" class="p-2">
+                                <mat-label>Change to an existing address</mat-label>
+                                <select matNativeControl required>
+                                    <option>Volvo</option>
+                                </select>
+                            </mat-form-field>
+                            <br>
+                            <p>OR add a new address</p>
+                            <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                                <mat-label>Email</mat-label>
+                                <input
+                                    matInput
+                                    class="mat-custom-width"
+                                    id="email"
+                                    type="email"
+                                    formControlName="email"
+                                    placeholder="example@company.com"
+                                    >
+                            </mat-form-field>
+                            <mat-form-field appearance="standard" [color]="'accent'" class="p-2">
+                                <mat-label>Confirm Email</mat-label>
+                                <input
+                                    matInput
+                                    class="mat-custom-width"
+                                    id="confirmEmail"
+                                    type="email"
+                                    formControlName="confrimEmail"
+                                    placeholder="example@company.com"
+                                    >
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    <!-- </div> -->

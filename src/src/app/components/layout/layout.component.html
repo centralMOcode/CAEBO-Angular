@@ -1,11 +1,5 @@
 <app-header></app-header>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-1 col-sm-2 sidebar shadow">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-md-11 col-sm-10 ml-auto body-custom">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+<app-sidebar></app-sidebar>
+<div class="right-panel">
+    <router-outlet></router-outlet>
 </div>
