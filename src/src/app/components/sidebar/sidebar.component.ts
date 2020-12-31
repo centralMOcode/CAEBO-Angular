@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  page: string = "Home";
+  page: number;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setPage(page: number) {
+    this.page = page;
+  }
 }

@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { RegistrationComponent } from 'src/app/components/registration/registration.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     LayoutComponent,
     LoginComponent,
     RegistrationComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

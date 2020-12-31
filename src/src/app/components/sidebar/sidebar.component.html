@@ -1,14 +1,30 @@
-<nav class="nav flex-column">
-    <div>
-        <h3>{{ page }}</h3>
-    </div>
-    <div class="nav-item p-2">
-        <a [ngClass]="{ 'sidebar-link-active' : page === 'Home' }" class="nav-link" aria-current="page" href="/home">Home</a>
-    </div>
-    <div class="nav-item p-2">
-        <a [ngClass]="{ active : page === 'Group' }" class="nav-link" aria-current="page" href="/home">Group</a>
-    </div>
-    <div class="nav-item p-2">
-        <a [ngClass]="{ active : page === 'Profile' }" class="nav-link" aria-current="page" href="/home">Profile</a>
-    </div>
-</nav>
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu">
+            <br>
+            <ul class="nav navbar-nav">
+                <li class="sidebar-menu-spacing">
+                    <a class="active" href="/home">
+                        <mat-icon>home</mat-icon>
+                    Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-menu-spacing">
+                    <a class="active" href="/home">
+                        <mat-icon>favorite</mat-icon>
+                    Group
+                    </a>
+                </li>
+                <li class="sidebar-menu-spacing">
+                    <a class="active" href="/profile">
+                        <mat-icon>menu</mat-icon>
+                    Profile
+                    </a>
+                </li>
+                <!-- <li class="sidebar-menu-spacing">
+                    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+</aside>

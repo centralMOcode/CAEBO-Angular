@@ -1,0 +1,4 @@
+.right-panel {
+    display: table-cell;
+    padding-left: 0 !important
+}
